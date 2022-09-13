@@ -12,6 +12,7 @@ public class Main {
 
         Integer[] lista = new Integer[50];
         String opc = null;
+        int numero;
 
 
 
@@ -21,6 +22,7 @@ public class Main {
             System.out.println("Listar: mostrará por pantalla el contenido del array con la sintaxis: Elemento 1: X");
             System.out.println("Ordenar: ordenará el array con números de menos a mayor.");
             System.out.println("Vaciar: dejará el array vacío");
+            System.out.println("Buscar: buscar un elemento y sacar su posicion");
             System.out.println("Salir: terminará la ejecución del programa");
             opc = in.next();
 
@@ -52,8 +54,26 @@ public class Main {
 
             if (opc.equalsIgnoreCase("vaciar")){
 
+                for (int i = 0; i < lista.length; i++) {
+                    lista[i] = 0;
+                    System.out.println(lista[i]);
+                }
+                System.out.println("Lista vacia");
 
             }
+
+            if (opc.equalsIgnoreCase("buscar")){
+                System.out.println("¿Qué numero quieres buscar?");
+                numero = in.nextInt();
+
+                for (int i = 0; i < lista.length; i++) {
+                    if (lista[i] == numero){
+                        System.out.println("El numero "+ numero + " se encuentra en la posicion "+ (i + 1));
+                    }
+                }
+
+            }
+
 
         }while(!opc.equalsIgnoreCase("salir"));
 
