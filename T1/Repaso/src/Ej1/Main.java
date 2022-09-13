@@ -1,55 +1,46 @@
 package Ej1;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class Main {
+public class Main{
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-
-        String nombre;
-        String respuesta;
-        Calendar calendario = Calendar.getInstance();
-        int horas = calendario.get(Calendar.HOUR_OF_DAY);
-        int minutos = calendario.get(Calendar.MINUTE);
-        int dias = calendario.get(Calendar.DAY_OF_MONTH);
-        int mes = calendario.get(Calendar.MONTH) +1;
-        int ano = calendario.get(Calendar.YEAR);
-
-
-
-
-        System.out.println("Por favor introduce tu nombre: ");
-
-        nombre = in.next();
+        String nombre, continuar="S";
+        Calendar calendario;
+        int hora, minutos, mes, anio, dia;
+        String saludo = "%s %s son las %d:%d del %d de %s de %d%n";
+        String tipoSaludo;
+        String[] meses = {"Enero","Febrero", "Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Oct","Nov","Dic"} ;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("introduce tu nombre");
+        nombre = scanner.next();
 
         do {
+            calendario = Calendar.getInstance();
+            hora =calendario.get(Calendar.HOUR_OF_DAY);
+            minutos =calendario.get(Calendar.MINUTE);
+            dia =calendario.get(Calendar.DAY_OF_MONTH);
+            anio =calendario.get(Calendar.YEAR);
+            mes =calendario.get(Calendar.MONTH);
 
-            if (horas < 14){
-                System.out.println("Buenos días " + nombre +", Son las "+horas+":"+ minutos +" del "+dias+" de "+ mes+ " del "+ ano);
+
+            if (hora >=6 && hora<12){
+                tipoSaludo = "Buenos dias";
+            } else if (hora>=12 && hora<20){
+                tipoSaludo = "Buenas tardes";
+            } else {
+                tipoSaludo = "Buenas noches";
             }
 
-            if (horas > 14 && horas < 20){
-                System.out.println("Buenas tardes " + nombre +", Son las "+horas+":"+ minutos +" del "+dias+" de "+ mes+ " del "+ ano);
-            }
+            System.out.printf(saludo,tipoSaludo,nombre,hora,minutos,dia,meses[mes],anio);
+            System.out.println("Quieres volver a comprobar");
+            continuar = scanner.next();
 
-            if (horas > 20){
-                System.out.println("Buenas noches " + nombre +", Son las "+horas+":"+ minutos +" del "+dias+" de "+ mes+ " del "+ ano);
-            }
+        }while (continuar.equalsIgnoreCase("s"));
 
-
-
-            System.out.println("¿Quieres volver a comprobar la hora?");
-            respuesta = in.next();
-
-        }while(respuesta.equalsIgnoreCase("S"));
-
-        System.out.println("Que tengas buen día.");
-
-
+        System.out.println("Que tengas buen día");
 
     }
+
 }
