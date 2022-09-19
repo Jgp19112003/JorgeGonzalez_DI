@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public class Jugador {
 
-
+    // Variables
     private int puntos;
     private int turnos = 2;
     ArrayList<Carta> cartas_jugador = new ArrayList<>();
 
+    // Constructores
     public Jugador() {
     }
-
+    // Metodos
     public void mostrarCartas() {
         for (Carta item : cartas_jugador) {
             System.out.println(item.getSigno());
@@ -22,6 +23,8 @@ public class Jugador {
         this.setTurnos(getTurnos() - 1);
     }
 
+
+    // Getter and Setters
     public int getPuntos() {
         return puntos;
     }
