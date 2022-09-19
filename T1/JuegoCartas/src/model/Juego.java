@@ -36,7 +36,7 @@ public class Juego {
 
     public void asignarCartas(){
 
-        for (int i = 1; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
 
             j1.cartas_jugador.add(baraja.get(i));
             baraja.remove(baraja.get(i));
@@ -44,7 +44,7 @@ public class Juego {
         System.out.println("Cartas Jugador 1");
         j1.mostrarCartas();
 
-        for (int i = 5; i < 9; i++) {
+        for (int i = 4; i < 8; i++) {
 
             j2.cartas_jugador.add(baraja.get(i));
             baraja.remove(baraja.get(i));
@@ -52,6 +52,7 @@ public class Juego {
         System.out.println("Cartas Jugador 2");
         j2.mostrarCartas();
         System.out.println("-- Turno Jugador 1 --");
+
     }
 
     public void turnoJugador1(){
@@ -111,8 +112,6 @@ public class Juego {
 
                     break;
             }
-        }else{
-            
         }
     }
 
