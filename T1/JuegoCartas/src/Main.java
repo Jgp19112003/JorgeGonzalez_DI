@@ -11,7 +11,7 @@ public class Main {
         juego.asignarCartas();
         juego.turnoJugador1();
         juego.comparar();
-
+//
 
     }
 }
