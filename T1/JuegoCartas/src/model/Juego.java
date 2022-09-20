@@ -30,8 +30,8 @@ public class Juego {
 
         for (int i = 0; i < palos.length; i++) {
             for (int j = 1; j < 13; j++) {
-                baraja.add(new Carta(j + palos[i], j));
-                baraja_ordenada.add(new Carta(j + palos[i], j));
+                baraja.add(new Carta(j + palos[i], palos[i],j));
+                baraja_ordenada.add(new Carta(j + palos[i], palos[i],j));
 
             }
         }
@@ -195,14 +195,50 @@ public class Juego {
                 return 0;
             }
         });
-        for (Carta item: j1.cartas_jugador) {
-            System.out.println(item.getSigno());
+
+        for (int i = 0; i < j1.cartas_jugador.size(); i++) {
+            for (int j = i + 1; j < j1.cartas_jugador.size(); j++) {
+                if (j1.cartas_jugador.get(i).getPalo().equalsIgnoreCase(j1.cartas_jugador.get(j).getPalo())){
+                    if (j1.cartas_jugador.get(i).getValor() == j1.cartas_jugador.get(j).getValor() - 1) {
+                        j1.setPuntos(j1.getPuntos() + 1);
+                    }
+                }
+
+            }
+        }
+
+        Collections.sort(j2.cartas_jugador, new Comparator<Carta>() {
+            @Override
+            public int compare(Carta o1, Carta o2) {
+                if (o1.getValor() < o2.getValor()) {
+                    return -1;
+                }
+                return 0;
+            }
+        });
+
+        for (int i = 0; i < j2.cartas_jugador.size(); i++) {
+            for (int j = i + 1; j < j2.cartas_jugador.size(); j++) {
+                if (j2.cartas_jugador.get(i).getPalo().equalsIgnoreCase(j2.cartas_jugador.get(j).getPalo())){
+                    if (j2.cartas_jugador.get(i).getValor() == j2.cartas_jugador.get(j).getValor() - 1) {
+                        j2.setPuntos(j2.getPuntos() + 1);
+                    }
+                }
+
+            }
         }
 
 
-        System.out.println("Puntos Jugador 1: " + j1.getPuntos());
-        System.out.println("Puntos Jugador 2: " + j2.getPuntos());
+        /*System.out.println("Puntos Jugador 1: " + j1.getPuntos());
+        System.out.println("Puntos Jugador 2: " + j2.getPuntos());*/
+        if (j1.getPuntos() > j2.getPuntos()){
+            System.out.println("Ganador Jugador 1");
+        } else if (j1.getPuntos() < j2.getPuntos()) {
+            System.out.println("Ganador Jugador 2");
+        }else {
+            System.out.println("Empate");
+        }
 
-    }//
+    }
 
 }

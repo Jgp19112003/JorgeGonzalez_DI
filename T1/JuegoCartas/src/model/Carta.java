@@ -5,12 +5,15 @@ import com.sun.tools.javac.Main;
 public class Carta {
 
     // Variables
-    private String signo;
+    private String signo, palo;
     private int valor;
 
     // Constructores
-    public Carta(String signo, int valor) {
+
+
+    public Carta(String signo, String palo, int valor) {
         this.signo = signo;
+        this.palo = palo;
         this.valor = valor;
     }
 
@@ -34,4 +37,11 @@ public class Carta {
         this.valor = valor;
     }
 
+    public String getPalo() {
+        return palo;
+    }
+
+    public void setPalo(String palo) {
+        this.palo = palo;
+    }
 }
