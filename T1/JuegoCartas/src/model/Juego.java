@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
@@ -10,6 +11,7 @@ public class Juego {
 
 
    private ArrayList<Carta> baraja = new ArrayList<>(48);
+   private ArrayList<Carta> baraja_ordenada = new ArrayList<>(48);
    private Jugador j1 = new Jugador();
    private Jugador j2 = new Jugador();
    private int opc, conteo_baraja;
@@ -29,6 +31,8 @@ public class Juego {
         for (int i = 0; i < palos.length; i++) {
             for (int j = 1; j < 13; j++) {
                 baraja.add(new Carta(j + palos[i], j));
+                baraja_ordenada.add(new Carta(j + palos[i], j));
+
             }
         }
         Collections.shuffle(baraja);
@@ -111,7 +115,6 @@ public class Juego {
                     break;
             }
         }
-        comprobar();
     }
 
     public void turnoJugador2(){
@@ -177,30 +180,27 @@ public class Juego {
                     break;
             }
         }
-        comprobar();
+
     }
 
-    public void comprobar(){
-        System.out.println("Dentro");
-        for (int i = 0; i < j1.cartas_jugador.size(); i++) {
-            System.out.println(j1.cartas_jugador.get(i).getValor());
+    public void comparar(){
 
-           * if (j1.cartas_jugador.get(i).getValor() == j1.cartas_jugador.get(i + 1).getValor() + 1 && j1.cartas_jugador.get(i).getSigno().equalsIgnoreCase(j1.cartas_jugador.get( i + 1 ).getSigno())){
-                j1.setPuntos(j1.getPuntos() + 1);
-                System.out.println("Comprobando");
+
+        Collections.sort(j1.cartas_jugador, new Comparator<Carta>() {
+            @Override
+            public int compare(Carta o1, Carta o2) {
+                if (o1.getValor() < o2.getValor()) {
+                    return -1;
+                }
+                return 0;
             }
+        });
+        for (Carta item: j1.cartas_jugador) {
+            System.out.println(item.getSigno());
         }
+
+
         System.out.println("Puntos Jugador 1: " + j1.getPuntos());
-
-
-        for (int i = 0; i < j2.cartas_jugador.size(); i++) {
-            System.out.println(j2.cartas_jugador.get(i).getValor());
-
-            if (j2.cartas_jugador.get(i).getValor() == j2.cartas_jugador.get(i + 1).getValor() + 1 && j2.cartas_jugador.get(i).getSigno().equalsIgnoreCase(j2.cartas_jugador.get( i + 1 ).getSigno())){
-                j2.setPuntos(j2.getPuntos() + 1);
-                System.out.println("Comprobando");
-            }
-        }
         System.out.println("Puntos Jugador 2: " + j2.getPuntos());
 
     }

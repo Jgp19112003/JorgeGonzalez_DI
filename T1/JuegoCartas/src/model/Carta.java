@@ -4,6 +4,7 @@ import com.sun.tools.javac.Main;
 
 public class Carta {
 
+    // Variables
     private String signo;
     private int valor;
 

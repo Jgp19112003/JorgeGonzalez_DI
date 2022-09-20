@@ -12,6 +12,7 @@ public class Jugador {
     // Constructores
     public Jugador() {
     }
+
     // Metodos
     public void mostrarCartas() {
         for (Carta item : cartas_jugador) {
