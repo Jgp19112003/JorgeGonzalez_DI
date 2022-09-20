@@ -11,7 +11,7 @@ public class Juego {
 
 
    private ArrayList<Carta> baraja = new ArrayList<>(48);
-   private ArrayList<Carta> baraja_ordenada = new ArrayList<>(48);
+
    private Jugador j1 = new Jugador();
    private Jugador j2 = new Jugador();
    private int opc, conteo_baraja;
@@ -31,8 +31,6 @@ public class Juego {
         for (int i = 0; i < palos.length; i++) {
             for (int j = 1; j < 13; j++) {
                 baraja.add(new Carta(j + palos[i], palos[i],j));
-                baraja_ordenada.add(new Carta(j + palos[i], palos[i],j));
-
             }
         }
         Collections.shuffle(baraja);
