@@ -41,7 +41,8 @@ public class Persona {
 
     public int calcularIMC() {
         double peso_ideal;
-        peso_ideal = (peso / (Math.pow(2, altura)));
+        peso_ideal = (peso / Math.pow(altura, 2));
+        System.out.println(peso_ideal);
         if (peso_ideal < 20) {
             toString();
             System.out.println(nombre + sexo + peso + altura + edad);
@@ -52,11 +53,14 @@ public class Persona {
             System.out.println(nombre + sexo + peso + altura + edad);
             System.out.println("Estas por debajo de tu peso");
             return 0;
-        } else {
+        } else if (peso_ideal > 25) {
             toString();
             System.out.println(nombre + sexo + peso + altura + edad);
             System.out.println("Estas en sobrepeso");
             return 1;
+        } else {
+            System.out.println("No hay datos");
+            return -1;
         }
 
     }

@@ -25,7 +25,6 @@ public class MainIMC {
         Persona persona3 = new Persona();
 
         persona1.calcularIMC();
-        persona1.toString();
         persona2.calcularIMC();
         persona3.calcularIMC();
 
