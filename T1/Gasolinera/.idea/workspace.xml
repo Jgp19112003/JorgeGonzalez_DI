@@ -28,6 +28,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../JorgeGonzalez_PMDM/Entrega1" />
   </component>
   <component name="RunManager">
     <configuration name="MainGasolinera" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -64,5 +65,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
