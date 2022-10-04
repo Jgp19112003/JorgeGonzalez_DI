@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0df38b-22b5-4308-b6ad-38c3b5c136cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/T4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pestanias/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pestanias/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/pestanias/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../inicioFX/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../inicioFX/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../inicioFX/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../inicioFX/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../inicioFX/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="df0df38b-22b5-4308-b6ad-38c3b5c136cf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +34,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Usuario DAM2/Documents/GitHub/JorgeGonzalez_DI/T2/T4/Pestanias"
+    "last_opened_file_path": "C:/Users/Usuario DAM2/Documents/GitHub/JorgeGonzalez_PMDM/T1/JorgeGonzalezPerez_Examen"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
