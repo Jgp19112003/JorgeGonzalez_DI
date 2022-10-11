@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df0df38b-22b5-4308-b6ad-38c3b5c136cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pestanias/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pestanias/model/TipoPago.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/pestanias/power_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/pestanias/power_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/pestanias/switchoff.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/pestanias/switchon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pestanias/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pestanias/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pestanias/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pestanias/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/pestanias/MainFx.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/pestanias/MainFx.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,18 +41,45 @@
     </option>
   </component>
   <component name="ProjectId" id="2Ff5cfAOny6irDFJWPoqrHIgARi" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Usuario DAM2/Documents/GitHub/JorgeGonzalez_DI/T2/T4/Pestanias"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario DAM2/Documents/GitHub/JorgeGonzalez_DI/T2/T4/Pestanias&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario DAM2\Documents\GitHub\JorgeGonzalez_DI\T2\T4\Pestanias\src\main\resources\com\example\pestanias" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.pestanias.HelloApplication" />
+      <module name="Pestanias" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pestanias.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HelloApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
