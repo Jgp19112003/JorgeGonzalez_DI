@@ -23,6 +23,7 @@ public class MainController implements Initializable {
     @FXML
     Button boton7;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         boton7.setOnAction(new EventHandler<ActionEvent>() {
@@ -31,28 +32,17 @@ public class MainController implements Initializable {
                 textoOperacion.setText(textoOperacion.getText()+boton7.getText());
             }
         });
-        acciones();
+
     }
 
     private void acciones() {
-        boton7.setOnAction(new ManejoPulsaciones());
-        for (Node child : gridPrincipal.getChildren()) {
-            if (child instanceof Button) {
-                ((Button) child).setOnAction(new ManejoPulsaciones());
-                textoOperacion.setText(textoOperacion.getText() + ((Button) child).getText());
-            }
-        }
+
     }
 
     class ManejoPulsaciones implements EventHandler<ActionEvent> {
-
         @Override
         public void handle(ActionEvent actionEvent) {
-            if (actionEvent.getSource() == boton7) {
-                System.out.println("Recibido");
-                textoOperacion.setText("Funciona");
-                System.out.println(textoOperacion.getText());
-            }
+
         }
 
 
