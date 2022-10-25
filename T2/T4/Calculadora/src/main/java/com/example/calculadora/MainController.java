@@ -299,4 +299,4 @@ public class MainController implements Initializable {
         }
     }
 }
-// TODO: 24/10/2022 Hacer operaciones con un solo operando en la parte cientifica, ¿Que es la E? 
+// TODO: 24/10/2022  ¿Que es la E?
