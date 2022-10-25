@@ -49,6 +49,7 @@ public class MainController implements Initializable {
     }
 
     private void acciones() {
+
         sci.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue,
@@ -97,34 +98,39 @@ public class MainController implements Initializable {
         public void handle(ActionEvent actionEvent) {
 
             if (actionEvent.getSource() == bigual) {
-                op2 = Double.parseDouble(textoOperacion.getText());
+
                 textoRegistro.setText(textoRegistro.getText() + bigual.getText());
                 switch (tipoOperacion) {
                     case 0:
+                        op2 = Double.parseDouble(textoOperacion.getText());
                         resultado = op1 + op2;
                         textoOperacion.setText(String.valueOf(resultado));
                         textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
                         break;
 
                     case 1:
+                        op2 = Double.parseDouble(textoOperacion.getText());
                         resultado = op1 - op2;
                         textoOperacion.setText(String.valueOf(resultado));
                         textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
                         break;
 
                     case 2:
+                        op2 = Double.parseDouble(textoOperacion.getText());
                         resultado = op1 * op2;
                         textoOperacion.setText(String.valueOf(resultado));
                         textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
                         break;
 
                     case 3:
+                        op2 = Double.parseDouble(textoOperacion.getText());
                         resultado = op1 / op2;
                         textoOperacion.setText(String.valueOf(resultado));
                         textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
                         break;
 
                     case 4:
+                        op2 = Double.parseDouble(textoOperacion.getText());
                         resultado = op1 % op2;
                         textoOperacion.setText(String.valueOf(resultado));
                         textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
@@ -137,6 +143,31 @@ public class MainController implements Initializable {
                             factorial=factorial*i;
                             resultado = factorial;
                         }
+                        textoOperacion.setText(String.valueOf(resultado));
+                        textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
+                        break;
+
+                    case 6:
+                        resultado = Math.sin(op1);
+                        textoOperacion.setText(String.valueOf(resultado));
+                        textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
+                        break;
+
+                    case 7:
+                        resultado = Math.sqrt(op1);
+                        textoOperacion.setText(String.valueOf(resultado));
+                        textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
+                        break;
+
+                    case 8:
+                        op2 = Double.parseDouble(textoOperacion.getText());
+                        resultado = Math.pow(op1,op2);
+                        textoOperacion.setText(String.valueOf(resultado));
+                        textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
+                        break;
+
+                    case 9:
+                        resultado = Math.log(op1);
                         textoOperacion.setText(String.valueOf(resultado));
                         textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
                         break;
@@ -175,32 +206,32 @@ public class MainController implements Initializable {
             if (actionEvent.getSource() == bfactorial) {
                 op1 = Integer.parseInt(textoOperacion.getText());
                 textoOperacion.setText("!" + textoOperacion.getText());
-                textoRegistro.setText(textoRegistro.getText() + bfactorial.getText().substring(1));
+                textoRegistro.setText( bfactorial.getText().substring(1) + textoRegistro.getText());
                 tipoOperacion = 5;
             }
             if (actionEvent.getSource() == bseno) {
                 op1 = Double.parseDouble(textoOperacion.getText());
-                textoRegistro.setText(textoRegistro.getText() + bbarra.getText());
+                textoOperacion.setText("sin()" + textoOperacion.getText());
+                textoRegistro.setText("sin()" + textoRegistro.getText());
                 tipoOperacion = 6;
-                textoOperacion.setText("");
             }
             if (actionEvent.getSource() == braiz) {
                 op1 = Double.parseDouble(textoOperacion.getText());
-                textoRegistro.setText(textoRegistro.getText() + bbarra.getText());
+                textoOperacion.setText(braiz.getText() + textoOperacion.getText());
+                textoRegistro.setText(braiz.getText() +  textoRegistro.getText());
                 tipoOperacion = 7;
-                textoOperacion.setText("");
             }
             if (actionEvent.getSource() == bexponente) {
                 op1 = Double.parseDouble(textoOperacion.getText());
-                textoRegistro.setText(textoRegistro.getText() + bbarra.getText());
+                textoRegistro.setText(textoRegistro.getText() + bexponente.getText());
                 tipoOperacion = 8;
                 textoOperacion.setText("");
             }
             if (actionEvent.getSource() == blogneperiano) {
                 op1 = Double.parseDouble(textoOperacion.getText());
-                textoRegistro.setText(textoRegistro.getText() + bbarra.getText());
+                textoOperacion.setText("ln()" + textoOperacion.getText());
+                textoRegistro.setText("ln()" + textoRegistro.getText());
                 tipoOperacion = 9;
-                textoOperacion.setText("");
             }
             if (actionEvent.getSource() == bac) {
                 textoOperacion.setText("");
@@ -216,6 +247,7 @@ public class MainController implements Initializable {
             if (actionEvent.getSource() == be) {
 
             }
+
             if (actionEvent.getSource() == b0) {
                 textoOperacion.setText(textoOperacion.getText() + b0.getText());
                 textoRegistro.setText(textoRegistro.getText() + b0.getText());
@@ -261,7 +293,7 @@ public class MainController implements Initializable {
             }
             if (actionEvent.getSource() == bnume) {
                 textoOperacion.setText(textoOperacion.getText() + 2.7182);
-                textoRegistro.setText(textoRegistro.getText() + be.getText());
+                textoRegistro.setText(textoRegistro.getText() + bnume.getText());
             }
 
         }
