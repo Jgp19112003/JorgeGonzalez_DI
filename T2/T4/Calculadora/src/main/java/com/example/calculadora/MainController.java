@@ -30,11 +30,10 @@ public class MainController implements Initializable {
     ToggleButton sci, register;
 
     @FXML
-    TextArea textoOperacion,textoRegistro;
+    TextArea textoOperacion, textoRegistro;
 
     @FXML
-    Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bporcentaje, bbarra, bx, bac, bpunto, bmenos, bmas, bigual, be, bmasbarramenos, bborrar, bfactorial
-                ,bseno, braiz, bexponente, blogneperiano, bnume;
+    Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bporcentaje, bbarra, bx, bac, bpunto, bmenos, bmas, bigual, be, bmasbarramenos, bborrar, bfactorial, bseno, braiz, bexponente, blogneperiano, bnume;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,7 +53,6 @@ public class MainController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue,
                                 Boolean oldValue, Boolean newValue) {
-                sci.setDisable(newValue);
                 if (newValue) {
                     borderPanePrincipal.setLeft(gridCientifica);
                 } else {
@@ -66,7 +64,7 @@ public class MainController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue,
                                 Boolean oldValue, Boolean newValue) {
-                register.setDisable(newValue);
+
                 if (newValue) {
                     borderPanePrincipal.setRight(gridRegistro);
                 } else {
@@ -138,9 +136,8 @@ public class MainController implements Initializable {
 
                     case 5:
                         int factorial = 1;
-                        for (int i = (int) op1; i>0; i--)
-                        {
-                            factorial=factorial*i;
+                        for (int i = (int) op1; i > 0; i--) {
+                            factorial = factorial * i;
                             resultado = factorial;
                         }
                         textoOperacion.setText(String.valueOf(resultado));
@@ -161,7 +158,7 @@ public class MainController implements Initializable {
 
                     case 8:
                         op2 = Double.parseDouble(textoOperacion.getText());
-                        resultado = Math.pow(op1,op2);
+                        resultado = Math.pow(op1, op2);
                         textoOperacion.setText(String.valueOf(resultado));
                         textoRegistro.setText(textoRegistro.getText() + resultado + "\n");
                         break;
@@ -199,14 +196,15 @@ public class MainController implements Initializable {
             }
             if (actionEvent.getSource() == bporcentaje) {
                 op1 = Double.parseDouble(textoOperacion.getText());
-                textoRegistro.setText(textoRegistro.getText() + bporcentaje.getText());
-                tipoOperacion = 4;
+                textoOperacion.setText(bporcentaje.getText() + textoOperacion.getText());
+                textoRegistro.setText(bporcentaje.getText() + textoRegistro.getText());
                 textoOperacion.setText("");
+                tipoOperacion = 4;
             }
             if (actionEvent.getSource() == bfactorial) {
                 op1 = Integer.parseInt(textoOperacion.getText());
                 textoOperacion.setText("!" + textoOperacion.getText());
-                textoRegistro.setText( bfactorial.getText().substring(1) + textoRegistro.getText());
+                textoRegistro.setText(bfactorial.getText().substring(1) + textoRegistro.getText());
                 tipoOperacion = 5;
             }
             if (actionEvent.getSource() == bseno) {
@@ -218,7 +216,7 @@ public class MainController implements Initializable {
             if (actionEvent.getSource() == braiz) {
                 op1 = Double.parseDouble(textoOperacion.getText());
                 textoOperacion.setText(braiz.getText() + textoOperacion.getText());
-                textoRegistro.setText(braiz.getText() +  textoRegistro.getText());
+                textoRegistro.setText(braiz.getText() + textoRegistro.getText());
                 tipoOperacion = 7;
             }
             if (actionEvent.getSource() == bexponente) {
@@ -238,14 +236,15 @@ public class MainController implements Initializable {
             }
             if (actionEvent.getSource() == bmasbarramenos) {
                 textoOperacion.setText("-" + textoOperacion.getText());
-                textoRegistro.setText(textoRegistro.getText() +textoOperacion.getText());
+                textoRegistro.setText("-" + textoRegistro.getText());
             }
             if (actionEvent.getSource() == bpunto) {
                 textoOperacion.setText(textoOperacion.getText() + bpunto.getText());
                 textoRegistro.setText(textoRegistro.getText() + bpunto.getText());
             }
             if (actionEvent.getSource() == be) {
-
+                textoOperacion.setText(textoOperacion.getText() + 2.7182);
+                textoRegistro.setText(textoRegistro.getText() + bnume.getText());
             }
 
             if (actionEvent.getSource() == b0) {
