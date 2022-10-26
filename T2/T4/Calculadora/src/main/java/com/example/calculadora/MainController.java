@@ -204,19 +204,19 @@ public class MainController implements Initializable {
             if (actionEvent.getSource() == bfactorial) {
                 op1 = Integer.parseInt(textoOperacion.getText());
                 textoOperacion.setText("!" + textoOperacion.getText());
-                textoRegistro.setText(bfactorial.getText().substring(1) + textoRegistro.getText());
+                textoRegistro.setText( textoRegistro.getText() + bfactorial.getText().substring(1) );
                 tipoOperacion = 5;
             }
             if (actionEvent.getSource() == bseno) {
                 op1 = Double.parseDouble(textoOperacion.getText());
                 textoOperacion.setText("sin()" + textoOperacion.getText());
-                textoRegistro.setText("sin()" + textoRegistro.getText());
+                textoRegistro.setText(textoRegistro.getText() + "sin()");
                 tipoOperacion = 6;
             }
             if (actionEvent.getSource() == braiz) {
                 op1 = Double.parseDouble(textoOperacion.getText());
                 textoOperacion.setText(braiz.getText() + textoOperacion.getText());
-                textoRegistro.setText(braiz.getText() + textoRegistro.getText());
+                textoRegistro.setText(textoRegistro.getText() + braiz.getText());
                 tipoOperacion = 7;
             }
             if (actionEvent.getSource() == bexponente) {
@@ -228,7 +228,7 @@ public class MainController implements Initializable {
             if (actionEvent.getSource() == blogneperiano) {
                 op1 = Double.parseDouble(textoOperacion.getText());
                 textoOperacion.setText("ln()" + textoOperacion.getText());
-                textoRegistro.setText("ln()" + textoRegistro.getText());
+                textoRegistro.setText(textoRegistro.getText() + "ln()");
                 tipoOperacion = 9;
             }
             if (actionEvent.getSource() == bac) {
@@ -298,4 +298,4 @@ public class MainController implements Initializable {
         }
     }
 }
-// TODO: 24/10/2022  ¿Que es la E?
+// JP
