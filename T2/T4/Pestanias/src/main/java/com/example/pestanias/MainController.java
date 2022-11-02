@@ -20,7 +20,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -79,8 +86,33 @@ public class MainController implements Initializable {
         instancias();
         asociarDatos();
         configurarBotones();
+        interpretarJSON();
         acciones();
     }
+
+    private void interpretarJSON() {
+        String urlString = "https://randomuser.me/api/?results=1";
+
+
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
+            BufferedReader br = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
+
+            String linea = null;
+            String lecturacompleta = "";
+            while ((linea = br.readLine()) != null){
+                lecturacompleta+=linea;
+            }
+
+            JSONObject objectoCompleto = new JSONObject(lecturacompleta);
+            System.out.println(objectoCompleto);
+            System.out.println();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     private void asociarDatos() {
 
@@ -119,21 +151,21 @@ public class MainController implements Initializable {
         grupoRadios.getToggles().addAll(radio1, radio2, radio3);
 
         listaChoice = FXCollections.observableArrayList();
-        listaChoice.addAll("OpcionCH 1","OpcionCH 2", "OpcionCH 3", "OpcionCH 4", "OpcionCH 5");
+        listaChoice.addAll("OpcionCH 1", "OpcionCH 2", "OpcionCH 3", "OpcionCH 4", "OpcionCH 5");
         listaCombo = FXCollections.observableArrayList();
-        listaCombo.addAll("OpcionCB 1","OpcionCB 2", "OpcionCB 3", "OpcionCB 4", "OpcionCB 5");
+        listaCombo.addAll("OpcionCB 1", "OpcionCB 2", "OpcionCB 3", "OpcionCB 4", "OpcionCB 5");
 
         listaSpinner = FXCollections.observableArrayList();
-        listaSpinner.addAll("OpcionSP 1","OpcionSP 2", "OpcionSP 3", "OpcionSP 4", "OpcionSP 5");
+        listaSpinner.addAll("OpcionSP 1", "OpcionSP 2", "OpcionSP 3", "OpcionSP 4", "OpcionSP 5");
 
         listaUsuarios = FXCollections.observableArrayList();
-        listaUsuarios.addAll(new Usuario(1,"usuario1","apellido1","correo1"),
-                new Usuario(2,"usuario2","apellido2","correo2"),
-                new Usuario(3,"usuario3","apellido3","correo3"),
-                new Usuario(4,"usuario4","apellido4","correo4"));
+        listaUsuarios.addAll(new Usuario(1, "usuario1", "apellido1", "correo1"),
+                new Usuario(2, "usuario2", "apellido2", "correo2"),
+                new Usuario(3, "usuario3", "apellido3", "correo3"),
+                new Usuario(4, "usuario4", "apellido4", "correo4"));
 
         listaListView = FXCollections.observableArrayList();
-        listaListView.addAll("Opcion 1","Opcion 2","Opcion 3","Opcion 4","Opcion 5","Opcion 6","Opcion 7","Opcion 8");
+        listaListView.addAll("Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5", "Opcion 6", "Opcion 7", "Opcion 8");
 
     }
 
@@ -196,13 +228,13 @@ public class MainController implements Initializable {
         combo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                System.out.println("El valor cambiado del combo es "+t1);
+                System.out.println("El valor cambiado del combo es " + t1);
             }
         });
         choice.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                System.out.println("La seleccion del choice es "+t1);
+                System.out.println("La seleccion del choice es " + t1);
             }
         });
 
@@ -210,15 +242,15 @@ public class MainController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Usuario> observableValue, Usuario usuario, Usuario t1) {
                 System.out.println("Datos del usuario");
-                System.out.println("\t nombre: "+t1.getNombre());
-                System.out.println("\t nombre: "+t1.getApellido());
-                System.out.println("\t nombre: "+t1.getCorreo());
+                System.out.println("\t nombre: " + t1.getNombre());
+                System.out.println("\t nombre: " + t1.getApellido());
+                System.out.println("\t nombre: " + t1.getCorreo());
             }
         });
         list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                System.out.println("Cambio en la lista, valor nuevo "+t1);
+                System.out.println("Cambio en la lista, valor nuevo " + t1);
             }
         });
         //botonNormal.addEventHandler(MouseEvent.MOUSE_RELEASED, new ManejoRaton());
@@ -282,8 +314,7 @@ public class MainController implements Initializable {
                 tipoOperacion = 2;
             } else if (actionEvent.getSource() == botonDiv) {
                 tipoOperacion = 3;
-            }
-            else if (actionEvent.getSource() == botonIgual) {
+            } else if (actionEvent.getSource() == botonIgual) {
                 int op1 = Integer.parseInt(String.valueOf(textFiledUno.getText().charAt(0)));
                 int op2 = Integer.parseInt(String.valueOf(textFiledDos.getText().charAt(0)));
                 double resultado = 0.0;
@@ -302,18 +333,15 @@ public class MainController implements Initializable {
                         break;
                 }
                 System.out.printf("El resutaldo de la operacion es %.2f", resultado);
-            }
-            else if (actionEvent.getSource() == botonMostrar) {
+            } else if (actionEvent.getSource() == botonMostrar) {
 
                 //panelMostrar.setVisible(true);
                 panelGeneral.setRight(panelMostrar);
-            }
-            else if (actionEvent.getSource() == botonOcultar) {
+            } else if (actionEvent.getSource() == botonOcultar) {
                 // VBOX --
                 //panelMostrar.setVisible(false);
                 panelGeneral.getChildren().remove(panelMostrar);
-            }
-            else if (actionEvent.getSource() == botonComprobar) {
+            } else if (actionEvent.getSource() == botonComprobar) {
                 // seleccion de una lista
 
                 String seleccionLista = list.getSelectionModel().getSelectedItem();
@@ -330,9 +358,9 @@ public class MainController implements Initializable {
                 //combo.getSelectionModel().selectNext();
                 //choice.getSelectionModel().selectNext();
 
-                if (combo.getSelectionModel().getSelectedIndex() >-1 && choice.getSelectionModel().getSelectedIndex()>-1){
-                    System.out.printf("Seleccion de combo %s%n",seleccionCombo);
-                    System.out.printf("Seleccion de choice %s%n",seleccionChoice);
+                if (combo.getSelectionModel().getSelectedIndex() > -1 && choice.getSelectionModel().getSelectedIndex() > -1) {
+                    System.out.printf("Seleccion de combo %s%n", seleccionCombo);
+                    System.out.printf("Seleccion de choice %s%n", seleccionChoice);
 
                 } else {
                     System.out.println("Uno de los dos elementos no tiene seleccion");
@@ -350,7 +378,6 @@ public class MainController implements Initializable {
                 // Apelllido: XXXX
                 // Correo: XXXX
                 // Id: XXXX
-
 
 
             }

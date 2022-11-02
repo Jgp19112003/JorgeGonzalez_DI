@@ -8,7 +8,7 @@ module com.example.pestanias {
             requires org.kordamp.ikonli.javafx;
             requires org.kordamp.bootstrapfx.core;
             requires com.almasb.fxgl.all;
-    
+            requires org.json;
     opens com.example.pestanias to javafx.fxml;
     exports com.example.pestanias;
 }
