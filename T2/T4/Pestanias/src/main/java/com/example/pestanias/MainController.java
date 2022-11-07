@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
@@ -37,7 +38,7 @@ public class MainController implements Initializable {
     @FXML
     private TabPane panelPestanias;
     @FXML
-    private Button botonNormal, botonNormalDos;
+    private Button botonNormal, botonNormalDos, botonFiltrar;
     @FXML
     private ToggleButton botonToggle;
     @FXML
@@ -65,14 +66,20 @@ public class MainController implements Initializable {
 
     @FXML
     private Spinner<String> spinner;
+    @FXML
+    private Spinner<Integer> spinnerNumUsuartios;
 
     @FXML
     private ListView<String> list;
+    @FXML
+    private ListView<Usuario> listUsuarios;
+    @FXML
+    private RadioButton radioTodos, radioMale, radioFemale;
 
     // ArrayList
 
     private ObservableList<String> listaCombo, listaChoice, listaSpinner, listaListView;
-
+    private ObservableList<Integer> listaSpinnerUsuarios;
     private ObservableList<Usuario> listaUsuarios;
 
 
@@ -80,18 +87,22 @@ public class MainController implements Initializable {
     private DropShadow sombraExterior;
     private ToggleGroup grupoRadios;
 
+    String tipoGenero;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // se ejecuca cuando se asocia la parte grafica y la logica --> setContentView
         instancias();
         asociarDatos();
         configurarBotones();
-        interpretarJSON();
         acciones();
     }
 
     private void interpretarJSON() {
-        String urlString = "https://randomuser.me/api/?results=1";
+
+        String urlString = "https://randomuser.me/api/?results=" + spinnerNumUsuartios.getValue() + "&gender=" + tipoGenero;
+        System.out.println(urlString);
 
 
         try {
@@ -101,13 +112,25 @@ public class MainController implements Initializable {
 
             String linea = null;
             String lecturacompleta = "";
-            while ((linea = br.readLine()) != null){
-                lecturacompleta+=linea;
+            while ((linea = br.readLine()) != null) {
+                lecturacompleta += linea;
             }
 
             JSONObject objectoCompleto = new JSONObject(lecturacompleta);
-            System.out.println(objectoCompleto);
-            System.out.println();
+            //System.out.println(objectoCompleto);
+            JSONArray arrayResults = objectoCompleto.getJSONArray("results");
+            for (int i = 0; i < arrayResults.length(); i++) {
+                JSONObject item = arrayResults.getJSONObject(i);
+                String title = item.getJSONObject("name").getString("title");
+                String first = item.getJSONObject("name").getString("first");
+                String last = item.getJSONObject("name").getString("last");
+                String email = item.getString("email");
+                String phone = item.getString("phone");
+                String urlImage = item.getJSONObject("picture").getString("large");
+                //System.out.printf("%s %s %s - %s %n ",title, first, last, urlImage);
+                listaUsuarios.add(new Usuario(title, first, last, email, phone));
+                listUsuarios.setItems(listaUsuarios);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -125,6 +148,8 @@ public class MainController implements Initializable {
         comboUsuarios.setItems(listaUsuarios);
         spinner.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<String>(listaSpinner));
         list.setItems(listaListView);
+        spinnerNumUsuartios.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<>(listaSpinnerUsuarios));
+
 
     }
 
@@ -150,6 +175,7 @@ public class MainController implements Initializable {
         grupoRadios = new ToggleGroup();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3);
 
+
         listaChoice = FXCollections.observableArrayList();
         listaChoice.addAll("OpcionCH 1", "OpcionCH 2", "OpcionCH 3", "OpcionCH 4", "OpcionCH 5");
         listaCombo = FXCollections.observableArrayList();
@@ -159,14 +185,18 @@ public class MainController implements Initializable {
         listaSpinner.addAll("OpcionSP 1", "OpcionSP 2", "OpcionSP 3", "OpcionSP 4", "OpcionSP 5");
 
         listaUsuarios = FXCollections.observableArrayList();
-        listaUsuarios.addAll(new Usuario(1, "usuario1", "apellido1", "correo1"),
+        /*listaUsuarios.addAll(new Usuario(1, "usuario1", "apellido1", "correo1"),
                 new Usuario(2, "usuario2", "apellido2", "correo2"),
                 new Usuario(3, "usuario3", "apellido3", "correo3"),
-                new Usuario(4, "usuario4", "apellido4", "correo4"));
+                new Usuario(4, "usuario4", "apellido4", "correo4"));*/
 
         listaListView = FXCollections.observableArrayList();
         listaListView.addAll("Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5", "Opcion 6", "Opcion 7", "Opcion 8");
 
+        listaSpinnerUsuarios = FXCollections.observableArrayList();
+        for (int i = 0; i < 100; i++) {
+            listaSpinnerUsuarios.add(i);
+        }
     }
 
     private void acciones() {
@@ -175,11 +205,15 @@ public class MainController implements Initializable {
         botonNormalDos.setOnAction(new ManejoPulsaciones());
         botonMostrar.setOnAction(new ManejoPulsaciones());
         botonOcultar.setOnAction(new ManejoPulsaciones());
+        botonFiltrar.setOnAction(new ManejoPulsaciones());
         for (Node child : gridBotones.getChildren()) {
             if (child instanceof Button) {
                 ((Button) child).setOnAction(new ManejoPulsaciones());
             }
         }
+        radioTodos.setOnAction(new ManejoPulsaciones());
+        radioMale.setOnAction(new ManejoPulsaciones());
+        radioFemale.setOnAction(new ManejoPulsaciones());
 
         /*botonSuma.setOnAction(new ManejoPulsaciones());
         botonResta.setOnAction(new ManejoPulsaciones());
@@ -189,6 +223,7 @@ public class MainController implements Initializable {
 
         // radio1.setOnAction(new ManejoPulsaciones());
         // botonToggle.setOnAction(new ManejoPulsaciones());
+
         grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
@@ -238,7 +273,7 @@ public class MainController implements Initializable {
             }
         });
 
-        comboUsuarios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {
+        /*comboUsuarios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {
             @Override
             public void changed(ObservableValue<? extends Usuario> observableValue, Usuario usuario, Usuario t1) {
                 System.out.println("Datos del usuario");
@@ -246,7 +281,7 @@ public class MainController implements Initializable {
                 System.out.println("\t nombre: " + t1.getApellido());
                 System.out.println("\t nombre: " + t1.getCorreo());
             }
-        });
+        });*/
         list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -254,6 +289,8 @@ public class MainController implements Initializable {
             }
         });
         //botonNormal.addEventHandler(MouseEvent.MOUSE_RELEASED, new ManejoRaton());
+
+
     }
 
     class ManejoRaton implements EventHandler<MouseEvent> {
@@ -355,6 +392,7 @@ public class MainController implements Initializable {
 
                 System.out.println(seleccionSpinner);
 
+                String seleccionSpinnerUsuarios = String.valueOf(spinnerNumUsuartios.getValue());
                 //combo.getSelectionModel().selectNext();
                 //choice.getSelectionModel().selectNext();
 
@@ -380,6 +418,22 @@ public class MainController implements Initializable {
                 // Id: XXXX
 
 
+            } else if (actionEvent.getSource() == botonFiltrar) {
+                System.out.println("Leido");
+                interpretarJSON();
+
+                listUsuarios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Usuario> observableValue, Usuario usuario, Usuario t1) {
+                        t1.mostrarDatos();
+                    }
+                });
+            } else if (radioTodos.isSelected()) {
+                tipoGenero = "";
+            } else if (radioMale.isSelected()) {
+                tipoGenero = "male";
+            } else if (radioFemale.isSelected()) {
+                tipoGenero = "female";
             }
         }
     }

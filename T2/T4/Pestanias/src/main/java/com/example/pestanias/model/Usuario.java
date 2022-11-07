@@ -2,50 +2,68 @@ package com.example.pestanias.model;
 
 public class Usuario {
 
-    private int id;
-    private String nombre, apellido, correo;
 
-    public Usuario(int id, String nombre, String apellido, String correo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
+    private String tittle, first, last, email, phone;
+
+    public Usuario(String tittle, String first, String last, String email, String phone) {
+        this.tittle = tittle;
+        this.first = first;
+        this.last = last;
+        this.email = email;
+        this.phone = phone;
     }
 
-    public int getId() {
-        return id;
+
+    public void mostrarDatos(){
+        System.out.println(getTittle());
+        System.out.println(getFirst());
+        System.out.println(getLast());
+        System.out.println(getEmail());
+        System.out.println(getPhone());
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getTittle() {
+        return tittle;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setTittle(String tittle) {
+        this.tittle = tittle;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getFirst() {
+        return first;
     }
 
-    public String getApellido() {
-        return apellido;
+    public void setFirst(String first) {
+        this.first = first;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public String getLast() {
+        return last;
     }
 
-    public String getCorreo() {
-        return correo;
+    public void setLast(String last) {
+        this.last = last;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
-        return getId() + " - " +getNombre();
+        return String.format("%s %s %s", tittle,first,last);
     }
 }
