@@ -101,7 +101,7 @@ public class MainController implements Initializable {
     }
 
     private void interpretarJSON() {
-
+        listaUsuarios.clear();
         String urlString = "https://randomuser.me/api/?results=" + spinnerNumUsuartios.getValue() + "&gender=" + tipoGenero;
         System.out.println(urlString);
 
@@ -116,7 +116,6 @@ public class MainController implements Initializable {
             while ((linea = br.readLine()) != null) {
                 lecturacompleta += linea;
             }
-
             JSONObject objectoCompleto = new JSONObject(lecturacompleta);
             //System.out.println(objectoCompleto);
             JSONArray arrayResults = objectoCompleto.getJSONArray("results");
@@ -176,7 +175,7 @@ public class MainController implements Initializable {
         grupoRadios = new ToggleGroup();
         grupoRadiosGenero = new ToggleGroup();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3);
-        grupoRadiosGenero.getToggles().addAll(radioTodos,radioMale,radioFemale);
+        grupoRadiosGenero.getToggles().addAll(radioTodos, radioMale, radioFemale);
 
 
         listaChoice = FXCollections.observableArrayList();
@@ -394,7 +393,7 @@ public class MainController implements Initializable {
                 System.out.println(combo.getSelectionModel().getSelectedIndex());
 
                 System.out.println(seleccionSpinner);
-                
+
                 //combo.getSelectionModel().selectNext();
                 //choice.getSelectionModel().selectNext();
 
@@ -421,7 +420,6 @@ public class MainController implements Initializable {
 
 
             } else if (actionEvent.getSource() == botonFiltrar) {
-                System.out.println("Leido");
                 interpretarJSON();
 
                 listUsuarios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {
