@@ -85,7 +85,8 @@ public class MainController implements Initializable {
 
     private int tipoOperacion = -1;
     private DropShadow sombraExterior;
-    private ToggleGroup grupoRadios;
+    private ToggleGroup grupoRadios, grupoRadiosGenero;
+
 
     String tipoGenero;
 
@@ -173,7 +174,9 @@ public class MainController implements Initializable {
     private void instancias() {
         sombraExterior = new DropShadow();
         grupoRadios = new ToggleGroup();
+        grupoRadiosGenero = new ToggleGroup();
         grupoRadios.getToggles().addAll(radio1, radio2, radio3);
+        grupoRadiosGenero.getToggles().addAll(radioTodos,radioMale,radioFemale);
 
 
         listaChoice = FXCollections.observableArrayList();
