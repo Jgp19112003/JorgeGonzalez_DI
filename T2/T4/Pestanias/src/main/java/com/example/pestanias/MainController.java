@@ -394,8 +394,7 @@ public class MainController implements Initializable {
                 System.out.println(combo.getSelectionModel().getSelectedIndex());
 
                 System.out.println(seleccionSpinner);
-
-                String seleccionSpinnerUsuarios = String.valueOf(spinnerNumUsuartios.getValue());
+                
                 //combo.getSelectionModel().selectNext();
                 //choice.getSelectionModel().selectNext();
 
