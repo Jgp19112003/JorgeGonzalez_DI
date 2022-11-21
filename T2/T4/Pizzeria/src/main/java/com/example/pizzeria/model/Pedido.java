@@ -45,4 +45,9 @@ public class Pedido {
     public void setPizza(Pizza pizza) {
         this.pizza = pizza;
     }
+
+    @Override
+    public String toString() {
+        return id + " " + nombre + " " + telefono + " " + pizza.getNombre();
+    }
 }

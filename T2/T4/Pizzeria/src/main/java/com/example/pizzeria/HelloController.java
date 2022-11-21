@@ -120,8 +120,8 @@ public class HelloController implements Initializable {
                     @Override
                     public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
                         RadioButton radioButton = (RadioButton) t1;
-                        System.out.println("El tamaño de la pizza ha cambiado a " + radioButton.getText());
                         tamanio = radioButton.getText();
+                        System.out.println("El tamaño de la pizza ha cambiado a " + ((RadioButton) t1).getText());
 
                         if (pizza1.getNombre().equalsIgnoreCase("barbacoa")) {
                             nombre = "Barbacoa";
@@ -180,8 +180,15 @@ public class HelloController implements Initializable {
                 Pizza pizzaCreada = new Pizza(nombre,tamanio,precio,ingredientes_creada);
                 Pedido pedido = new Pedido(contador,parseInt(fieldTelefono.getText()),fieldNombre.getText(),pizzaCreada);
                 contador++;
-                listaPedidos.getItems().add(pedido);
+                listaPedidos.getItems().add(pedido.toString());
+
+                fieldTelefono.setText("");
+                fieldNombre.setText("");
+
+                System.out.println(pizzaCreada.getPrecio());
+                comboPizza.getSelectionModel().clearSelection();
             }
         }
     }
 }
+// TODO: 21/11/2022 Al agregar el primer pedido bien, pero luego se raya si dejas la misma pizza y tamaño

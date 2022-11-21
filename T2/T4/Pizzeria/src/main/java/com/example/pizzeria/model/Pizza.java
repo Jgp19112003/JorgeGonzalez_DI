@@ -48,4 +48,9 @@ public class Pizza {
     public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }
