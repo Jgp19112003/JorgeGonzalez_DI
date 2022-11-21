@@ -21,12 +21,12 @@ import static java.lang.Integer.parseInt;
 
 public class ThirdController implements Initializable {
 
+    private HelloController controller;
     @FXML
     private Button botonAgregarConfirmar;
     @FXML
     private TextField fieldNombre, fieldApellido, fieldCorreo, fieldTelefono;
 
-    private int contador;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,6 +36,10 @@ public class ThirdController implements Initializable {
 
     private void instancias() {
 
+    }
+
+    public void setController(HelloController controller){
+        this.controller = controller;
     }
 
     private void acciones() {
@@ -56,10 +60,8 @@ public class ThirdController implements Initializable {
                     Scene escena = new Scene(root, 400, 400);
                     // 4- Unir scene y stage
                     ventana.setScene(escena);
-                    HelloController controller = fxmlLoader.getController();
-                    controller.agregarAlumno(new Alumno(fieldNombre.getText(), fieldApellido.getText(), fieldCorreo.getText(), parseInt(fieldTelefono.getText()), contador));
-                    contador++;
-                    ventana.show();
+
+                    controller.agregarAlumno(new Alumno(fieldNombre.getText(), fieldApellido.getText(), fieldCorreo.getText(), parseInt(fieldTelefono.getText()), 0));
                     Stage ventanaActual = (Stage) botonAgregarConfirmar.getScene().getWindow();
                     ventanaActual.close();
 

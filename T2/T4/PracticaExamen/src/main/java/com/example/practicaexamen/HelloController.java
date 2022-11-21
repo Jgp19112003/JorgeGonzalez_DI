@@ -33,6 +33,8 @@ public class HelloController implements Initializable {
 
     private ObservableList listaTabla;
 
+    private int contador = 1;
+
     private Alumno alumnoSeleccionado;
 
     @Override
@@ -45,11 +47,16 @@ public class HelloController implements Initializable {
     private void instancias() {
 
         listaTabla = FXCollections.observableArrayList();
-        listaTabla.add(new Alumno("Mario", "Olmos", "mariete@gmail.com", 123, 1));
-        listaTabla.add(new Alumno("Jorge", "Gonzalez", "jpjpjpjp@gmail.com", 456, 2));
-        listaTabla.add(new Alumno("Alvaro", "Sanchez", "hunterr@gmail.com", 789, 3));
-        listaTabla.add(new Alumno("Andres", "Zamarreño", "zammaza@gmail.com", 1234, 4));
-        listaTabla.add(new Alumno("Sara", "Vaquero", "seta@gmail.com", 123456, 5));
+        listaTabla.add(new Alumno("Mario", "Olmos", "mariete@gmail.com", 123, contador));
+        contador++;
+        listaTabla.add(new Alumno("Jorge", "Gonzalez", "jpjpjpjp@gmail.com", 456, contador));
+        contador++;
+        listaTabla.add(new Alumno("Alvaro", "Sanchez", "hunterr@gmail.com", 789, contador));
+        contador++;
+        listaTabla.add(new Alumno("Andres", "Zamarreño", "zammaza@gmail.com", 1234, contador));
+        contador++;
+        listaTabla.add(new Alumno("Sara", "Vaquero", "seta@gmail.com", 123456, contador));
+        contador++;
     }
 
     private void acciones() {
@@ -76,6 +83,8 @@ public class HelloController implements Initializable {
     }
 
     public void agregarAlumno(Alumno alumno) {
+        alumno.setId(contador);
+        contador++;
         listaTabla.add(alumno);
     }
 
@@ -116,6 +125,7 @@ public class HelloController implements Initializable {
                         // 4- Unir scene y stage
                         ventana.setScene(escena);
                         ThirdController controller = fxmlLoader.getController();
+                        controller.setController(HelloController.this);
                         // 6- Hacer visible la ventana
                         ventana.setTitle("Ventana Agregar");
                         ventana.show();
