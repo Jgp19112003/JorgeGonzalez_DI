@@ -187,6 +187,10 @@ public class HelloController implements Initializable {
 
                 System.out.println(pizzaCreada.getPrecio());
                 comboPizza.getSelectionModel().clearSelection();
+
+                radioFamiliar.setSelected(false);
+                radioMediana.setSelected(false);
+                radioPequeña.setSelected(false);
             }
         }
     }
