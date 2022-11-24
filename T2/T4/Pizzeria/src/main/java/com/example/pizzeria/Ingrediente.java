@@ -1,4 +1,4 @@
-package com.example.pizzeria.model;
+package com.example.pizzeria;
 
 public class Ingrediente {
 
@@ -14,5 +14,10 @@ public class Ingrediente {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 }

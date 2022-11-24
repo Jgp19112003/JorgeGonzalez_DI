@@ -1,4 +1,4 @@
-package com.example.pizzeria.model;
+package com.example.pizzeria;
 
 public class Pedido {
 
