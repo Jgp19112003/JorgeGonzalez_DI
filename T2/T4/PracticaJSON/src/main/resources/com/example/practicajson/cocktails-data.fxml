@@ -14,7 +14,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Actions">
             <items>
-              <MenuItem mnemonicParsing="false" text="Show sold cocktails" />
+              <MenuItem fx:id="actionShowImage" mnemonicParsing="false" text="Show cocktail image" />
             </items>
           </Menu>
         </menus>
@@ -34,6 +34,6 @@
       </TableView>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" text="Show sold cocktails" BorderPane.alignment="CENTER" />
+      <Button fx:id="showImage" mnemonicParsing="false" text="Show cocktail image" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

@@ -48,6 +48,8 @@ public class HelloController implements Initializable {
 
     private String urlQuery;
 
+    private ToggleGroup grupoRadios;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -61,6 +63,8 @@ public class HelloController implements Initializable {
         listaCombo = FXCollections.observableArrayList();
         listaCombo.addAll("Name", "Id");
         listaCocktails = FXCollections.observableArrayList();
+        grupoRadios = new ToggleGroup();
+        grupoRadios.getToggles().addAll(radioAlcoholic, radioNonAlcoholic);
     }
 
     private void asociarDatos() {
@@ -90,6 +94,13 @@ public class HelloController implements Initializable {
         });
         botonSearch.setOnAction(new ManejoPulsaciones());
         botonVender.setOnAction(new ManejoPulsaciones());
+
+        grupoRadios.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
+                RadioButton radioButton = (RadioButton) newValue;
+            }
+        });
     }
 
     private class ManejoPulsaciones implements EventHandler<ActionEvent> {
@@ -122,13 +133,15 @@ public class HelloController implements Initializable {
                     String strCategory = "";
                     String strAlcoholic = "";
                     String strInstructions = "";
+                    String strDrinkThumb = "";
                     for (int i = 0; i < arrayResultados.length(); i++) {
                         JSONObject resultadoUno = arrayResultados.getJSONObject(i);
                         strDrink = resultadoUno.getString("strDrink");
                         strCategory = resultadoUno.getString("strCategory");
                         strAlcoholic = resultadoUno.getString("strAlcoholic");
                         strInstructions = resultadoUno.getString("strInstructions");
-                        Cocktail cocktail = new Cocktail(strDrink, strCategory, strAlcoholic, strInstructions);
+                        strDrinkThumb = resultadoUno.getString("strDrinkThumb");
+                        Cocktail cocktail = new Cocktail(strDrink, strCategory, strAlcoholic, strInstructions,strDrinkThumb);
                         listaCocktails.add(cocktail);
                     }
                     textoCocktails.setItems(listaCocktails);
@@ -152,7 +165,7 @@ public class HelloController implements Initializable {
                     SecondController controller = fxmlLoader.getController();
                     controller.setController(HelloController.this);
 
-                    controller.recuperarDatos(cocktail_seleccionado);
+                    controller.agregarCocktail(cocktail_seleccionado);
                     // 5- Hacer visible la ventana
                     ventana.setTitle("Ventana secundaria");
                     ventana.show();

@@ -1,14 +1,27 @@
 package com.example.practicajson;
 
-public class Cocktail {
-    private String nombre, categoria, alcochol, instrucciones;
+import javafx.scene.image.Image;
 
-    public Cocktail(String nombre, String categoria, String alcochol, String instrucciones) {
+public class Cocktail {
+    private String nombre, categoria, alcochol, instrucciones, imagen;
+
+
+    public Cocktail(String nombre, String categoria, String alcochol, String instrucciones, String imagen) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.alcochol = alcochol;
         this.instrucciones = instrucciones;
+        this.imagen = imagen;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
 
     public String getNombre() {
         return nombre;
