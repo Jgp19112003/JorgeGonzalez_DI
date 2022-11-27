@@ -167,7 +167,7 @@ public class HelloController implements Initializable {
 
                     controller.agregarCocktail(cocktail_seleccionado);
                     // 5- Hacer visible la ventana
-                    ventana.setTitle("Ventana secundaria");
+                    ventana.setTitle("Bar: " + fieldNombreBar.getText());
                     ventana.show();
 
                 } catch (IOException e) {
