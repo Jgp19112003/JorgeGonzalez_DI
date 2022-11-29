@@ -1,8 +1,5 @@
 package com.example.pizzeria;
 
-import com.example.pizzeria.model.Ingrediente;
-import com.example.pizzeria.model.Pedido;
-import com.example.pizzeria.model.Pizza;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -31,7 +28,7 @@ public class HelloController implements Initializable {
     private Button botonRealizarPedido;
 
     @FXML
-    private ListView listaPedidos;
+    private ListView<Pedido> listaPedidos;
 
     @FXML
     private TextField fieldNombre, fieldTelefono;
@@ -47,7 +44,6 @@ public class HelloController implements Initializable {
     private ArrayList<Ingrediente> ingredientes_hawaiana = new ArrayList<>();
     private ArrayList<Ingrediente> ingredientes_jyq = new ArrayList<>();
     private ArrayList<Ingrediente> ingredientes_4q = new ArrayList<>();
-
     private int contador = 1;
 
     @Override
@@ -66,7 +62,7 @@ public class HelloController implements Initializable {
         grupoRadios = new ToggleGroup();
         grupoRadios.getToggles().addAll(radioFamiliar, radioMediana, radioPequeña);
         Ingrediente bacon = new Ingrediente("bacon");
-        Ingrediente salsa_barbacoa = new Ingrediente("salsa barbacoa,");
+        Ingrediente salsa_barbacoa = new Ingrediente("salsa barbacoa");
         Ingrediente maiz = new Ingrediente("maíz");
         Ingrediente cebolla = new Ingrediente("cebolla");
         Ingrediente carne = new Ingrediente("carne");
@@ -74,8 +70,8 @@ public class HelloController implements Initializable {
         Ingrediente jamon = new Ingrediente("jamón");
         Ingrediente salsa = new Ingrediente("salsa");
         Ingrediente queso = new Ingrediente("queso");
-        Ingrediente gorgonzola = new Ingrediente("queso gorgonzola,");
-        Ingrediente parmesano = new Ingrediente("queso parmesano,");
+        Ingrediente gorgonzola = new Ingrediente("queso gorgonzola");
+        Ingrediente parmesano = new Ingrediente("queso parmesano");
         Ingrediente roquefort = new Ingrediente("queso roquefort");
         Ingrediente gouda = new Ingrediente("queso gouda");
         ingredientes_barbacoa.add(bacon);
@@ -88,7 +84,6 @@ public class HelloController implements Initializable {
         ingredientes_hawaiana.add(salsa);
         ingredientes_jyq.add(queso);
         ingredientes_jyq.add(jamon);
-        ingredientes_4q.add(queso);
         ingredientes_4q.add(gorgonzola);
         ingredientes_4q.add(parmesano);
         ingredientes_4q.add(roquefort);
@@ -108,6 +103,8 @@ public class HelloController implements Initializable {
         radioMediana.setOnAction(new ManejoPulsaciones());
         radioPequeña.setOnAction(new ManejoPulsaciones());
         botonRealizarPedido.setOnAction(new ManejoPulsaciones());
+
+
 
 
         comboPizza.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pizza>() {
@@ -159,16 +156,24 @@ public class HelloController implements Initializable {
                         } else if (pizza1.getNombre().equalsIgnoreCase("4 Quesos")) {
                             nombre = "4 Quesos";
                             ingredientes_creada = ingredientes_4q;
-                            if (pizza1.getNombre().equalsIgnoreCase("barbacoa")) {
+                            if (tamanio.equalsIgnoreCase("familiar")) {
                                 precio = 17;
-                            } else if (pizza1.getNombre().equalsIgnoreCase("hawaiana")) {
+                            } else if (tamanio.equalsIgnoreCase("mediana")) {
                                 precio = 13;
-                            } else if (pizza1.getNombre().equalsIgnoreCase("Jamón y Queso")) {
+                            } else if (tamanio.equalsIgnoreCase("pequeña")) {
                                 precio = 8;
                             }
                         }
                     }
                 });
+            }
+        });
+
+        listaPedidos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pedido>() {
+            @Override
+            public void changed(ObservableValue<? extends Pedido> observableValue, Pedido pedido, Pedido t1) {
+                System.out.println(t1.toString());
+                t1.getPizza().mostrarDatos();
             }
         });
     }
@@ -180,13 +185,17 @@ public class HelloController implements Initializable {
                 Pizza pizzaCreada = new Pizza(nombre,tamanio,precio,ingredientes_creada);
                 Pedido pedido = new Pedido(contador,parseInt(fieldTelefono.getText()),fieldNombre.getText(),pizzaCreada);
                 contador++;
-                listaPedidos.getItems().add(pedido.toString());
+                listaPedidos.getItems().add(pedido);
 
                 fieldTelefono.setText("");
                 fieldNombre.setText("");
 
                 System.out.println(pizzaCreada.getPrecio());
                 comboPizza.getSelectionModel().clearSelection();
+
+                radioFamiliar.setSelected(false);
+                radioMediana.setSelected(false);
+                radioPequeña.setSelected(false);
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.example.pizzeria.model;
+package com.example.pizzeria;
 
 import java.util.ArrayList;
 
@@ -52,5 +52,12 @@ public class Pizza {
     @Override
     public String toString() {
         return nombre;
+    }
+
+    public void mostrarDatos(){
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Tamaño: " + tamanio);
+        System.out.println("Precio: " + precio);
+        System.out.println("Ingredientes: " + ingredientes.toString());
     }
 }
