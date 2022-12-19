@@ -42,8 +42,14 @@ class Nota{
         this.tareas = tareas;
     }
     agregarTarea(tarea) {
-        this.tareas.push(tarea)
-    
+        //this.tareas.filter((item) => item.nombre == tarea.nombre ).length > 0 ? alert("Ya existe esa tarea") :  this.tareas.push(tarea)     
+        this.tareas.some((item) => item.nombre == tarea.nombre) ? alert("Ya existe esa tarea") :  this.tareas.push(tarea)
+    }
+    completarTarea(nombre){
+        this.tareas.find((item) => item.nombre == nombre).estado = true
+    }
+    marcarCompleta(){
+        this.tareas.some((item) => item.estado == false) ? alert("Todavia quedan tareas por hacer") : nota1.estado = true
     }
     mostrarDatos() {
         console.log(`Titulo: ${this.titulo}`)
