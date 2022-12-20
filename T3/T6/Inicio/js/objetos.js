@@ -1,5 +1,5 @@
 
-/*lass ClaseEjemplo{
+/*class ClaseEjemplo{
     //variables
     propiedadUno;
     propiedadDos;
@@ -26,6 +26,68 @@
         return this.propiedadUno;
     }
 }*/
+class Tarea {
+    nombre;
+    estado;
+
+    constructor(nombre, estado) {
+        this.nombre = nombre;
+        this.estado = estado;
+    }
+    mostrarDatosTarea(){
+        console.log(`Nombre: ${this.nombre}`);
+        if (this.estado) {
+            console.log(`Estado: COMPLETADA`)
+        } else {
+            console.log(`Estado: POR HACER`)
+        }
+    }
+
+    set setNombre(param) {
+        this.nombre = param;
+    }
+    get getNombre() {
+        return this.nombre;
+    }
+    set setEstado(param) {
+        this.estado = param;
+    }
+    get getEstado() {
+        return this.estado;
+    }
+
+}
+class TareaMultimedia extends Tarea {
+    fichero;
+    constructor(nombre, estado, fichero) {
+        super(nombre,estado);
+        this.fichero = fichero
+    }
+    mostrarDatosTarea(){
+        super.mostrarDatosTarea();
+        console.log(`Fichero: ${this.fichero}`)
+    }
+
+    set setFichero(fichero){
+        this.fichero = fichero
+    }
+}
+class TareaTexto extends Tarea {
+    descripcion;
+    constructor(nombre, estado, descripcion) {
+        super(nombre, estado);
+        this.descripcion = descripcion
+    }
+
+    mostrarDatosTarea(){
+        super.mostrarDatosTarea();
+        console.log(`Descripcion: ${this.descripcion}`)
+    }
+    
+    set setDescripcion(descripcion){
+        this.descripcion = descripcion
+    }
+}
 class Nota{
     titulo;
     fecha;
@@ -71,37 +133,6 @@ class Nota{
         }
         
     }
-}
-class Tarea {
-    nombre;
-    estado;
-
-    constructor(nombre, estado) {
-        this.nombre = nombre;
-        this.estado = estado;
-    }
-    mostrarDatosTarea(){
-        console.log(`Nombre: ${this.nombre}`);
-        if (this.estado) {
-            console.log(`Estado: COMPLETADA`)
-        } else {
-            console.log(`Estado: POR HACER`)
-        }
-    }
-
-    set setNombre(param) {
-        this.nombre = param;
-    }
-    get getNombre() {
-        return this.nombre;
-    }
-    set setEstado(param) {
-        this.estado = param;
-    }
-    get getEstado() {
-        return this.estado;
-    }
-
 }
 /*
 let ejemploObjeto = new ClaseEjemplo("Propiedad uno", "Propiedad dos", ["param1","param2"]);
