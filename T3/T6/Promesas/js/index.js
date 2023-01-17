@@ -15,6 +15,26 @@ fetch(urlString)
             console.log(`${item.title} ${item.price}`);
           }
         });
+      } else if (selector.value == "imagen") {
+        res1.products.forEach((item) => {
+          item.images.forEach((image) => {
+            if (image == elemento.value) {
+              console.log(`${item.title} ${item.price}`);
+            }
+          });
+        });
+      } else if (selector.value == "precio") {
+        res1.products.forEach((item) => {
+          if (item.price == elemento.value) {
+            console.log(`${item.title} ${item.price}`);
+          }
+        });
+      } else if (selector.value == "descripcion") {
+        res1.products.forEach((item) => {
+          if (item.description == elemento.value) {
+            console.log(`${item.title} ${item.price}`);
+          }
+        });
       }
     });
   })
