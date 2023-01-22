@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,20 +16,15 @@
       crossorigin="anonymous"
     ></script>
     <title>Document</title>
-</head>
-<body>
-    <input class="form-control m-4" placeholder="Introduce elemento" id="elemento"/>
-
-          <select class="form-select m-4" aria-label="Default select example" id="selector">
-            <option value="imagen">Imagen</option>
-            <option value="nombre">Nombre</option>
-            <option value="descripcion">Descripcion</option>
-            <option value="precio">Precio</option>
-          </select>
-
-          <div class="m-4 clase1">
-            <button class="btn btn-dark" id="boton_filter">Filtrar</button>
-          </div>
-</body>
-<script src="./js/index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <select class="form-select"></select>
+      <button class="btn btn-primary">Filtrar</button>
+      <div class="row">
+        <!-- cada una de las cartas que va dentro de una columna -->
+      </div>
+    </div>
+  </body>
+  <script src="./js/index.js"></script>
 </html>
