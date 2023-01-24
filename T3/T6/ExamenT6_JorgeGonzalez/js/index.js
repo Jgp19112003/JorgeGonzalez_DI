@@ -24,6 +24,7 @@ agregarFavorito.addEventListener("click", function () {
 });
 
 verFavoritos.addEventListener("click", function () {
+  favoritos.innerHTML = "";
   lista_favoritos.forEach((element) => {
     favoritos.innerHTML =
       favoritos.innerHTML + `<li class="list-group-item">${element}</li>`;
@@ -66,3 +67,5 @@ fetch(urlMonedas)
   .catch((rej) => {
     console.log(`Ha habido algún tipo de fallo: ${rej}`);
   });
+
+/*JP*/
