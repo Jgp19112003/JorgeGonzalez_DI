@@ -8,15 +8,10 @@ lista_favoritos = [];
 let idMoneda = "3air";
 let verFavoritos = document.querySelector("#verFavoritos");
 let agregarFavorito = document.querySelector("#agregarFavorito");
-console.log(row);
 
 selector.addEventListener("change", function () {
   row.innerHTML = "";
-  monedas.forEach((element) => {
-    if (selector.value == element.name) {
-      cargarCarta(element.id);
-    }
-  });
+  cargarCarta(urlMoneda + selector.value);
 });
 
 verFavoritos.addEventListener("click", function () {
@@ -31,15 +26,13 @@ verFavoritos.addEventListener("click", function () {
   }
 });
 
-function cargarCarta(idMoneda) {
-  console.log(urlMoneda + idMoneda);
-  fetch(urlMoneda + idMoneda)
+function cargarCarta(urlMoneda) {
+  fetch(urlMoneda)
     .then((res) => {
       return res.json();
     })
     .then((res1) => {
-      console.log(res1);
-      row.innerHTML = `<div class="card" style="width: 18rem;">
+      row.innerHTML = `<div class="card" style="width: 35rem;">
         <div class="card-body">
             <h5 class="card-title">${res1.name}</h5>
             <p class="card-text">${res1.description.en}</p>
@@ -69,7 +62,8 @@ fetch(urlMonedas)
   .then((res1) => {
     res1.forEach((element) => {
       selector.innerHTML =
-        selector.innerHTML + `<option class="option">${element.name}</option>`;
+        selector.innerHTML +
+        `<option class="option" value="${element.id}">${element.name}</option>`;
       monedas.push(element);
     });
   })
