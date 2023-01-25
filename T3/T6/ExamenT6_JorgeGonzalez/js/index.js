@@ -45,6 +45,9 @@ function cargarCarta(idMoneda) {
             <p class="card-text">${res1.description.en}</p>
             <a href="${res1.links.homepage[0]}" class="btn btn-primary" id="verDetalles">Ver detalles</a>
         </div>
+        <ul class="list-group">
+        <li class="list-group-item">${res1.categories}</li>
+       </ul>
         <button class="btn btn-primary" id="agregarFavorito">Agregar como favorita</button>
         </div>
     </div>`;
