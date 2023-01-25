@@ -19,16 +19,16 @@ selector.addEventListener("change", function () {
   });
 });
 
-agregarFavorito.addEventListener("click", function () {
-  lista_favoritos.push(selector.value);
-});
-
 verFavoritos.addEventListener("click", function () {
-  favoritos.innerHTML = "";
-  lista_favoritos.forEach((element) => {
-    favoritos.innerHTML =
-      favoritos.innerHTML + `<li class="list-group-item">${element}</li>`;
-  });
+  if (lista_favoritos.length == 0) {
+    alert("La lista de favoritos esta vacia");
+  } else {
+    favoritos.innerHTML = "";
+    lista_favoritos.forEach((element) => {
+      favoritos.innerHTML =
+        favoritos.innerHTML + `<li class="list-group-item">${element}</li>`;
+    });
+  }
 });
 
 function cargarCarta(idMoneda) {
@@ -45,8 +45,14 @@ function cargarCarta(idMoneda) {
             <p class="card-text">${res1.description.en}</p>
             <a href="${res1.links.homepage[0]}" class="btn btn-primary" id="verDetalles">Ver detalles</a>
         </div>
+        <button class="btn btn-primary" id="agregarFavorito">Agregar como favorita</button>
         </div>
     </div>`;
+
+      let agregarFavorito = document.querySelector("#agregarFavorito");
+      agregarFavorito.addEventListener("click", function () {
+        lista_favoritos.push(selector.value);
+      });
     })
     .catch((rej) => {
       console.log(`Ha habido algún tipo de fallo: ${rej}`);
