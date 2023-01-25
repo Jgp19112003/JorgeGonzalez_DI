@@ -48,7 +48,7 @@ function cargarCarta(idMoneda) {
         <ul class="list-group">
         <li class="list-group-item">${res1.categories}</li>
        </ul>
-        <button class="btn btn-primary" id="agregarFavorito">Agregar como favorita</button>
+        <button class="btn btn-primary mt-3" id="agregarFavorito">Agregar como favorita</button>
         </div>
     </div>`;
 
