@@ -1,3 +1,5 @@
+<div class="row">
+    <div class="col">
 <p>Componente realizado por {{ alumno.nombre }} {{ alumno.apellido }}</p>
 <img style="width: 30%" [src]="urlImagen" />
 <div>
@@ -5,23 +7,52 @@
   <input type="text" class="form-control mt-3 mb-3" placeholder="Introduce nombre" aria-label="Username" aria-describedby="basic-addon1" #inputNombre>
   <input type="text" class="form-control mt-3 mb-3" placeholder="Introduce apellido" aria-label="Username" aria-describedby="basic-addon1" #inputApellido>
 
-    <div>
-      <input  type="radio" name="grupoRadios" value="Bachillerato" (change)="radioListener($event)" #cicloSeleccionado>
-      <label>Bachillerato</label>
-    </div>
+  <div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio"  value="Bachillerato" name="radios" id="radio_bachillerato" #radioBachillerato (change)="capturaEvento($event)">
+    <label class="form-check-label" for="radio_bachillerato">Bachillerato</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio"  value="FP" name="radios" id="radio_fp" #radioFP (change)="capturaCambioRadio(radioFP.value)">
+    <label class="form-check-label" for="radio_fp">FP</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio"  value="Universidad" name="radios" id="radio_uni" #radioUniversidad (change)="capturaEvento($event)">
+    <label class="form-check-label" for="radio_uni">Universidad</label>
+  </div>
+  <select class="form-select mt-3"  #selectCiclo>
+    <option value="DAW">DAW</option>
+    <option value="DAM">DAM</option>
+    <option value="ASIR">ASIR</option>
+  </select>
+
+  <div class="form-check mt-3">
+    <input class="form-check-input" type="checkbox"   id="checkExperiencia" #checkExperiencia>
+    <label class="form-check-label" for="checkExperiencia">Experiencia</label>
+  </div>
 
 
   <button
-    class="btn btn-primary"
-    (click)="pulsacionBotonIncial(inputNombre.value)"
+    class="btn btn-primary mt-3"
+    (click)="pulsacionBotonIncial(inputNombre.value, inputApellido.value, selectCiclo.value, checkExperiencia.checked)"
   >
     Agregar Usuario
   </button>
+
+  </div>
+  </div>
+  </div>
+
+<div class="col">
   <div class="mt-3">
-  <p>Candidato</p>
-  <p>Nombre: {{ inputNombre.value }}</p>
-  <p>Apellido: {{ inputApellido.value }}</p>
-  <p>Ciclo: {{cicloSeleccionado.value}}</p>
-  <p>Estudios:</p>
+  <p>{{ alumno.nombre }} <br>
+     {{ alumno.apellido }} <br>
+     {{ alumno.ciclo }} <br>
+     {{ alumno.estudios }} <br>
+     {{ alumno.experiencia }} <br>
+  </p>
+  </div>
 </div>
-</div>
+  </div>
+
+
