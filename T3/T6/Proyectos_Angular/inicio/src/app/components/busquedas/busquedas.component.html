@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col">
+<div>
+<!-- string "pueba" int 20 -->
+<input type="text" class="form-control mt-3 mb-3" placeholder="Introduce nombre" aria-label="Username" aria-describedby="basic-addon1" #inputNombre>
+<input type="text" class="form-control mt-3 mb-3" placeholder="Introduce apellido" aria-label="Username" aria-describedby="basic-addon1" #inputApellido>
+
+<div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio"  value="Bachillerato" name="radiosFormulario" id="radio_bachilleratoF" #radioBachillerato (change)="capturaEvento($event)">
+  <label class="form-check-label" for="radio_bachilleratoF">Bachillerato</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio"  value="FP" name="radiosFormulario" id="radio_fpF" #radioFP (change)="capturaEvento($event)">
+  <label class="form-check-label" for="radio_fpF">FP</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio"  value="Universidad" name="radiosFormulario" id="radio_uniF" #radioUniversidad (change)="capturaEvento($event)">
+  <label class="form-check-label" for="radio_uniF">Universidad</label>
+</div>
+<select class="form-select mt-3"  #selectCiclo>
+  <option value="DAW">DAW</option>
+  <option value="DAM">DAM</option>
+  <option value="ASIR">ASIR</option>
+</select>
+
+<div class="form-check mt-3">
+  <input class="form-check-input" type="checkbox"   id="checkExperiencia" #checkExperiencia>
+  <label class="form-check-label" for="checkExperiencia">Experiencia</label>
+</div>
+
+
+<button
+  class="btn btn-primary mt-3"
+  (click)="pulsacionBotonIncial(inputNombre.value, inputApellido.value, selectCiclo.value, checkExperiencia.checked)"
+>
+  Agregar Usuario
+</button>
+
+</div>
+</div>
+</div>
+
+<div class="col">
+  <p>Numero de alumnos registrados: {{registrados}}</p>
+  <p class="mt-5">FILTRAR</p>
+  <p>Por ciclo: </p>
+  <select class="form-select" #selectCicloF (change)="filtro == 0">
+    <option value="DAW">DAW</option>
+    <option value="DAM">DAM</option>
+    <option value="ASIR">ASIR</option>
+  </select>
+
+  <p>Por estudios: </p>
+  <select class="form-select" #selectEstudiosF (change)="filtro == 0">
+    <option value="Bachillerato" >Bachillerato</option>
+    <option value="FP">FP</option>
+    <option value="Universidad">Universidad</option>
+  </select>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio"  value="filtro1" name="radiosFiltro" id="filtro1" #filtro1 (change)="capturaEventoFiltro($event)">
+    <label class="form-check-label" for="filtro1">Filtro 1</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio"  value="filtro2" name="radiosFiltro" id="filtro2" #filtro2 (change)="capturaEventoFiltro($event)">
+    <label class="form-check-label" for="filtro2">Filtro 2</label>
+  </div>
+
+  <button
+  class="btn btn-primary mt-3"
+  (click)="pulsacionBotonBuscar(selectCicloF.value, selectEstudiosF.value)"
+>
+  Buscar
+</button>
+<ng-container *ngIf="filtrando; then thenTemplate;"></ng-container>
+<ng-template #thenTemplate>
+  <span [ngSwitch]="filtro">
+    <div *ngSwitchCase="0">
+      <div class="alert alert-danger" role="alert">
+        El numero de alumnos es {{filtro}}
+      </div>
+    </div>
+    <div *ngSwitchCase="1">
+      <div class="alert alert-warning" role="alert">
+        El numero de alumnos es {{filtro}}
+      </div>
+    </div>
+    <div *ngSwitchCase="2">
+      <div class="alert alert-warning" role="alert">
+        El numero de alumnos es {{filtro}}
+      </div>
+    </div>
+    <div *ngSwitchCase="3">
+      <div class="alert alert-warning" role="alert">
+        El numero de alumnos es {{filtro}}
+      </div>
+    </div>
+    <div *ngSwitchDefault>
+      <div class="alert alert-success" role="alert">
+        El numero de alumnos es {{filtro}}
+      </div>
+    </div>
+    </span>
+</ng-template>
+
+</div>
+</div>
+
+

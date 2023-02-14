@@ -1,0 +1,31 @@
+<div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio"  value="1" name="radios" id="opcion1" #opcion1 (change)="capturaEvento($event)">
+    <label class="form-check-label" for="opcion1">Opcion 1</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio"  value="2" name="radios" id="opcion2" #opcion2 (change)="capturaEvento($event)">
+    <label class="form-check-label" for="opcion2">Opcion 2</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio"  value="3" name="radios" id="opcion3" #opcion3 (change)="capturaEvento($event)">
+    <label class="form-check-label" for="opcion3">Opcion 3</label>
+  </div>
+
+<span [ngSwitch]="opcion">
+<div *ngSwitchCase="1">
+  <div class="alert alert-primary" role="alert">
+    Opcion 1 seleccionada
+  </div>
+</div>
+<div *ngSwitchCase="2">
+  <div class="alert alert-success" role="alert">
+    Opcion 2 seleccionada
+  </div>
+</div>
+<div *ngSwitchCase="3">
+  <div class="alert alert-warning" role="alert">
+    Opcione 3 seleccionada
+  </div>
+</div>
+</span>
