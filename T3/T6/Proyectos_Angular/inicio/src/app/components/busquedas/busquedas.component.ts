@@ -8,37 +8,32 @@ import { Component } from '@angular/core';
 export class BusquedasComponent {
   alumnos: any [] = []
   filtrando: boolean = false
-  alumno = {
-    nombre: '',
-    apellido: '',
-    ciclo: "",
-    experiencia: "",
-    estudios: ""
-  };
   seleccionFiltro = ""
   estudios = ""
   registrados = 0
   filtro = 0
 
 
-  pulsacionBotonIncial(nombre: string, apellido: string, ciclo: string, experiencia: boolean) {
+  pulsacionBotonIncial(nombreP: string,
+    apellidoP: string,
+    cicloP: string,
+    experienciaP: boolean)
+     {
     this.filtro == 0
-    if (nombre == "" || apellido == "" || this.estudios == "") {
+    if (nombreP == "" || apellidoP == "" || this.estudios == "") {
       alert("Rellena todos los datos del formulario")
     } else {
-      this.alumno.nombre = nombre;
-      this.alumno.apellido = apellido;
-      this.alumno.ciclo = ciclo;
-      this.alumno.estudios = this.estudios
-      if(experiencia){
-      this.alumno.experiencia = "Tiene experiencia"
-      } else {
-        this.alumno.experiencia = "No tiene experiencia"
-      }
+      let alumno = {
+        nombre: nombreP,
+        apellido: apellidoP,
+        experiencia: experienciaP,
+        ciclo: cicloP,
+        estudios: this.estudios,
+      };
       this.registrados++
 
         // crear alumno, porque cuando introduzco alumno, se me cambian los demas por el introducido
-        this.alumnos.push(this.alumno)
+        this.alumnos.push(alumno)
 
       this.alumnos.forEach(element => console.log(element));
     }
