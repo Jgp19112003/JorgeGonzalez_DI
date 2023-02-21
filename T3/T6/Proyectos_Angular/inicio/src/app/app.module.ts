@@ -9,6 +9,7 @@ import { EventosComponent } from './eventos/eventos.component';
 import { DirectivaifComponent } from './components/directivaif/directivaif.component';
 import { DirectivaswitchComponent } from './components/directivaswitch/directivaswitch.component';
 import { BusquedasComponent } from './components/busquedas/busquedas.component';
+import { DirectivaforComponent } from './components/directivafor/directivafor.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BusquedasComponent } from './components/busquedas/busquedas.component';
     EventosComponent,
     DirectivaifComponent,
     DirectivaswitchComponent,
-    BusquedasComponent
+    BusquedasComponent,
+    DirectivaforComponent
   ],
   imports: [
     BrowserModule,
