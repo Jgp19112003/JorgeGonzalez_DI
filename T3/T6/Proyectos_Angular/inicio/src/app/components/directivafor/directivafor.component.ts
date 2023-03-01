@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Asignatura } from 'src/app/model/asignatura';
+import { Asignatura } from 'src/app/model/Asignatura';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
 
 @Component({
@@ -23,5 +23,6 @@ export class DirectivaforComponent {
   evaluarCambio(evento: any) {
     let curso = Number(evento.target.value);
     this.asignaturas = this.servicioAsignaturas.getAsignaturasFiltradas(curso);
+
   }
 }

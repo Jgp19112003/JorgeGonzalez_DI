@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Asignatura } from '../model/asignatura';
+import { Asignatura } from '../model/Asignatura';
 
 @Injectable({
   providedIn: 'root',
