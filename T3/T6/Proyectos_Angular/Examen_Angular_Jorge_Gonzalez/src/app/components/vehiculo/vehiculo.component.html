@@ -1,0 +1,17 @@
+
+
+<div class="row">
+  <div class="col" *ngFor="let item of vehiculos">
+    <div class="card" style="width: 18rem" *ngIf= "tipo_vehiculo">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.nombre }}</h5>
+        <p class="card-text">
+          {{ item.nombre }}<br />
+          {{ item.marca }}<br />
+          {{ item.cv }} <br />
+          <img src={{item.imagen}} class="card-img-top" alt="...">
+        </p>
+      </div>
+    </div>
+  </div>
+
