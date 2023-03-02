@@ -6,6 +6,8 @@ import { vehiculo } from '../utils/vehiculo';
 })
 export class VehiculosDataService {
   tipo_vehiculo = '';
+  marca_buscador = ""
+  cv_buscador = ""
   vehiculos = [
     {
       nombre: 'MercedesGT AMG',
@@ -103,5 +105,11 @@ export class VehiculosDataService {
     } else {
       return this.getAllVehiculos();
     }
+  }
+
+  getVehiculosBuscador(marca: string, cv: number): vehiculo[] {
+      return this.vehiculos.filter(
+        (item: vehiculo) => item.marca == marca && item.cv >= cv
+      );
   }
 }

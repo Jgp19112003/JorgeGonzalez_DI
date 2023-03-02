@@ -16,8 +16,8 @@ export class AppComponent {
     private servicio: VehiculosDataService
   ) {}
 
-  navegarComponente(dato: number) {
-    this.gestorRutas.navigate(['maincomponent', dato]);
+  navegarComponente(dato: string) {
+    this.gestorRutas.navigate(['vehiculo', dato]);
   }
 
   tipoVehiculos(tipo: string) {

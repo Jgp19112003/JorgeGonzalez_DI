@@ -19,8 +19,8 @@ export class VehiculoComponent {
     private servicio: VehiculosDataService
   ) {
     gestorRutas.params.subscribe((param: Params) => {
-      this.datoComunicado = param['vehiculo'];
-      console.log(param['vehiculo']);
+      this.datoComunicado = param['id'];
+      console.log(param['id']);
       this.vehiculos = servicio.getVehiculosFiltrados();
 
       this.vehiculos.forEach((element) => {
